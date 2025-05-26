@@ -1,0 +1,14 @@
+rt_nonfinite.o: \
+ E:/25-2/VA/TRABAJ~1/26FEB/PRACTICA2_ert_rtw/rt_nonfinite.c \
+ E:/25-2/VA/TRABAJ~1/26FEB/PRACTICA2_ert_rtw/rtGetNaN.h \
+ E:/25-2/VA/TRABAJ~1/26FEB/PRACTICA2_ert_rtw/rt_nonfinite.h \
+ E:/25-2/VA/TRABAJ~1/26FEB/PRACTICA2_ert_rtw/rtwtypes.h \
+ E:/25-2/VA/TRABAJ~1/26FEB/PRACTICA2_ert_rtw/rtGetInf.h
+
+E:/25-2/VA/TRABAJ~1/26FEB/PRACTICA2_ert_rtw/rtGetNaN.h:
+
+E:/25-2/VA/TRABAJ~1/26FEB/PRACTICA2_ert_rtw/rt_nonfinite.h:
+
+E:/25-2/VA/TRABAJ~1/26FEB/PRACTICA2_ert_rtw/rtwtypes.h:
+
+E:/25-2/VA/TRABAJ~1/26FEB/PRACTICA2_ert_rtw/rtGetInf.h:
