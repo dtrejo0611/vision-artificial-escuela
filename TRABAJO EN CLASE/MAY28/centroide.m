@@ -1,7 +1,11 @@
 clc
 close all
 clear
+I = 1;
 
-f0 = imread("SVA 11 CENTROIDE\1.jpg");
+ruta = strcat("SVA 11 CENTROIDE\", num2str(I), ".jpg");
 
-imshow(f0)
+f0 = imread(ruta);
+
+f1 =  f0(:,:,3);
+mesh(f1)
