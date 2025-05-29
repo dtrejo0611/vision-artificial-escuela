@@ -7,35 +7,35 @@ Y=zeros(7);
 
 for I=1:7
 
-ruta = strcat("SVA 11 CENTROIDE\", num2str(I), ".jpg");
-
-f0 = imread(ruta);
-
-f1 =  f0(:,:,2);
-
-f2 = (f1<50);
-
-[filas, columnas] = size(f2);
-
-x = 1:columnas;
-y = 1:filas;
-
-fx = sum(f2,1);
-fy = sum(f2,2)';
-
-% figure, imshow(f2)
-% figure, plot(fx)
-% figure, plot(fy)
-
-xc = round(sum(x.*fx)/sum(fx));
-yc = round(sum(y.*fy)/sum(fy));
-
-X(I) = xc;
-Y(I) = yc;
-
-f0(yc,xc,:) = [255;255;255];
-
-% figure,imshow(f0)
+    ruta = strcat("SVA 11 CENTROIDE\", num2str(I), ".jpg");
+    
+    f0 = imread(ruta);
+    
+    f1 =  f0(:,:,2);
+    
+    f2 = (f1<50);
+    
+    [filas, columnas] = size(f2);
+    
+    x = 1:columnas;
+    y = 1:filas;
+    
+    fx = sum(f2,1);
+    fy = sum(f2,2)';
+    
+    % figure, imshow(f2)
+    % figure, plot(fx)
+    % figure, plot(fy)
+    
+    xc = round(sum(x.*fx)/sum(fx));
+    yc = round(sum(y.*fy)/sum(fy));
+    
+    X(I) = xc;
+    Y(I) = yc;
+    
+    f0(yc,xc,:) = [255;255;255];
+    
+    % figure,imshow(f0)
 
 end
 
