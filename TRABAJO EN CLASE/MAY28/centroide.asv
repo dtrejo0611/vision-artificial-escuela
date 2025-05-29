@@ -35,43 +35,17 @@ Y(I) = yc;
 
 f0(yc,xc,:) = [255;255;255];
 
-% figure,imshow(f0)
+figure,imshow(f0)
 
 end
 
 figure, plot(X)
-title("Posicion X")
 figure, plot(Y)
-title("Posicion Y")
 figure, plot(X,Y)
-title("Posicion")
 
 VX = zeros(6);
-VY = zeros(6);
-
-for i=2:7
-    VX(i-1) = X(i)-X(i-1);
-    VY(i-1) = Y(i)-Y(i-1);
-end
-
-figure, plot(VX)
-title("Velocidad X")
-figure, plot(VY)
-title("Velocidad Y")
-figure, plot(VX,VY)
-title("Velocidad")
-
-AX = zeros(5);
-AY = zeros(5);
+VY = zeros(5);
 
 for i=2:6
-    AX(i-1) = VX(i)-VX(i-1);
-    AY(i-1) = VY(i)-VY(i-1);
-end
+    VX =
 
-figure, plot(AX)
-title("Aceleracion X")
-figure, plot(AY)
-title("Aceleracion Y")
-figure, plot(AX,AY)
-title("Aceleracion")
