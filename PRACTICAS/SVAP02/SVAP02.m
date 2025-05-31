@@ -11,6 +11,10 @@ YM=zeros(250,1);
 XY=zeros(250,1);
 YY=zeros(250,1);
 
+TCC = zeros(250,2);
+TCM = zeros(250,2);
+TCY = zeros(250,2);
+
 for I=1:250
 
     ruta = strcat("C:\Users\dtrej\Documents\Semestre 25-2\VA" + ...
@@ -66,9 +70,35 @@ for I=1:250
     XY(I) = xcY;
     YY(I) = ycY;
 
+    TCC(I,:) = [XC(I), YC(I)];
+    TCM(I,:) = [XM(I), YM(I)];
+    TCY(I,:) = [XY(I), YY(I)];
+
     f1(ycC,xcC,:) = [255;0;0]; 
     f1(ycM,xcM,:) = [255;0;0]; 
     f1(ycY,xcY,:) = [255;0;0]; 
+
+    if I>2
+        for k = 2:I
+            f1 = insertShape(f1, 'Line', [TCC(k-1,1), TCC(k-1,2), ...
+                                   TCC(k,1), TCC(k,2)], ...
+                        'Color', 'c', 'LineWidth', 2);
+        end
+
+        for k = 2:I
+            f1 = insertShape(f1, 'Line', [TCM(k-1,1), TCM(k-1,2), ...
+                                   TCM(k,1), TCM(k,2)], ...
+                        'Color', 'm', 'LineWidth', 2);
+        end
+
+        for k = 2:I
+            f1 = insertShape(f1, 'Line', [TCY(k-1,1), TCY(k-1,2), ...
+                                   TCY(k,1), TCY(k,2)], ...
+                        'Color', 'y', 'LineWidth', 2);
+        end
+    
+        
+    end
     
     imwrite(f1,ruta2)
 

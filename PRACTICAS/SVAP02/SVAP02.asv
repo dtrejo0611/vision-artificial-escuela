@@ -11,11 +11,20 @@ YM=zeros(250,1);
 XY=zeros(250,1);
 YY=zeros(250,1);
 
+TCC = zeros(250,2);
+TCM = zeros(250,2);
+TCY = zeros(250,2);
+
 for I=1:250
 
-    ruta = strcat("C:\Users\dtrej\Documents\Semestre 25-2\VA\PRACTICAS\SVAP02\fotos\VidOG",num2str(I-1),".png");
+    ruta = strcat("C:\Users\dtrej\Documents\Semestre 25-2\VA" + ...
+        "\PRACTICAS\SVAP02\fotos\VidOG",num2str(I-1),".png");
+
+    ruta2 = strcat("C:\Users\dtrej\Documents\Semestre 25-2\VA" + ...
+        "\PRACTICAS\SVAP02\resultado\res",num2str(I-1),".png");
     
     f0 = imread(ruta);
+    f1 = f0;
 
     fR = f0(:,:,1);
     fG = f0(:,:,2);
@@ -61,9 +70,15 @@ for I=1:250
     XY(I) = xcY;
     YY(I) = ycY;
 
-    f0(ycC,xcC,:) = [255;0;0];
-    f0(ycM,xcM,:) = [255;0;0];
-    f0(ycY,xcY,:) = [255;0;0];
+    TCC(i)
+
+    f1(ycC,xcC,:) = [255;0;0]; 
+    f1(ycM,xcM,:) = [255;0;0]; 
+    f1(ycY,xcY,:) = [255;0;0]; 
+    
+    imwrite(f1,ruta2)
+
+
 end
 
 figure;
