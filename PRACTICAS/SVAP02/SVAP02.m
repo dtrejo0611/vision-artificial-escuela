@@ -1,0 +1,130 @@
+clc
+close all
+clear
+
+XC=zeros(250,1);
+YC=zeros(250,1);
+
+XM=zeros(250,1);
+YM=zeros(250,1);
+
+XY=zeros(250,1);
+YY=zeros(250,1);
+
+for I=1:250
+
+    ruta = strcat("C:\Users\dtrej\Documents\Semestre 25-2\VA" + ...
+        "\PRACTICAS\SVAP02\fotos\VidOG",num2str(I-1),".png");
+
+    ruta2 = strcat("C:\Users\dtrej\Documents\Semestre 25-2\VA" + ...
+        "\PRACTICAS\SVAP02\resultado\res",num2str(I-1),".png");
+    
+    f0 = imread(ruta);
+    f1 = f0;
+
+    fR = f0(:,:,1);
+    fG = f0(:,:,2);
+    fB = f0(:,:,3);
+    
+    FR = (fR<90);
+    FG = (fG<100);
+    FB = (fB<50);
+    
+    [filas, columnas] = size(fR);
+    
+    x = 1:columnas;
+    y = 1:filas;
+    
+    fxC = sum(FR,1);
+    fyC = sum(FR,2)';
+
+    xcC = round(sum(x.*fxC)/sum(fxC));
+    ycC = round(sum(y.*fyC)/sum(fyC));
+
+    XC(I) = xcC;
+    YC(I) = ycC;
+    
+    if I<149
+        fxM = sum(FG,1);
+        fyM = sum(FG,2)';
+            
+        xcM = round(sum(x.*fxM)/sum(fxM));
+        ycM = round(sum(y.*fyM)/sum(fyM));
+    
+    end
+    XM(I) = xcM;
+    YM(I) = ycM;
+        
+    if I<159
+        fxY = sum(FB,1);
+        fyY = sum(FB,2)';
+    
+        xcY = round(sum(x.*fxY)/sum(fxY));
+        ycY = round(sum(y.*fyY)/sum(fyY));
+        
+    end
+    XY(I) = xcY;
+    YY(I) = ycY;
+
+    f1(ycC,xcC,:) = [255;0;0]; 
+    f1(ycM,xcM,:) = [255;0;0]; 
+    f1(ycY,xcY,:) = [255;0;0]; 
+    
+    imwrite(f1,ruta2)
+
+
+end
+
+figure;
+subplot(3,1,1);
+plot(XC)
+title("Posicion X objeto cyan")
+subplot(3,1,2);
+plot(YC)
+title("Posicion Y objeto cyan")
+subplot(3,1,3);
+plot(XC,YC)
+title("Posicion objeto cyan")
+sgtitle('Posiciones objeto cyan')
+
+figure, imshow(f0)
+hold on;
+plot(XC,YC, 'c', 'LineWidth', 3)
+plot(XM,YM, 'm', 'LineWidth', 3)
+plot(XY,YY, 'y', 'LineWidth', 3)
+hold off;
+
+VXC = zeros(249);
+VYC = zeros(249);
+% 
+for i=2:250
+    VXC(i-1) = (XC(i)-XC(i-1))/(1/30);
+    VYC(i-1) = (YC(i)-YC(i-1))/(1/30);
+end
+
+figure;
+subplot(3,1,1);
+plot(VXC)
+title("Velocidad X objeto cyan")
+subplot(3,1,2);
+plot(VYC)
+title("Velocidad Y objeto cyan")
+subplot(3,1,3);
+plot(VXC,VYC)
+title("Velocidad objeto cyan")
+sgtitle('Velocidad objeto cyan')
+% 
+% AX = zeros(249);
+% AY = zeros(249);
+% 
+% for i=2:248
+%     AX(i-1) = VX(i)-VX(i-1);
+%     AY(i-1) = VY(i)-VY(i-1);
+% end
+% 
+% figure, plot(AX)
+% title("Aceleracion X")
+% figure, plot(AY)
+% title("Aceleracion Y")
+% figure, plot(AX,AY)
+% title("Aceleracion")
