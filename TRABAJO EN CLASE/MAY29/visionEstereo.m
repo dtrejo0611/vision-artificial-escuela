@@ -2,10 +2,10 @@ clc
 clear
 close all
 
-i = 1;
+i = 4;
 
-rutai = strcat("E:\25-2\VA\TRABAJO EN CLASE\MAY29\SVA12 VISION ESTEREO\Left Image ",num2str(i),".png");
-rutad = strcat("E:\25-2\VA\TRABAJO EN CLASE\MAY29\SVA12 VISION ESTEREO\Right Image ",num2str(i),".png");
+rutai = strcat("SVA12 VISION ESTEREO\Left Image ",num2str(i),".png");
+rutad = strcat("SVA12 VISION ESTEREO\Right Image ",num2str(i),".png");
 
 f0i = imread(rutai);
 f0d = imread(rutad);
