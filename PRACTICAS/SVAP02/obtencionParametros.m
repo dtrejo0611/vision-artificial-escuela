@@ -4,8 +4,7 @@ clear
 
 I = 0;
 
-ruta = strcat("C:\Users\dtrej\Documents\Semestre 25-2\VA\PRACTICAS" + ...
-    "\SVAP02\fotos\VidOG100.png");
+ruta = strcat("C:\Users\dtrej\Documents\Semestre 25-2\VA\PRACTICAS\SVAP02\og\186.png");
     
 f0 = imread(ruta);
 
