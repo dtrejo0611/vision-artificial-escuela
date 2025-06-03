@@ -2,9 +2,9 @@ clc
 close all
 clear
 
-I = 0;
+I = 43;
 
-ruta = strcat("C:\Users\dtrej\Documents\Semestre 25-2\VA\PRACTICAS\SVAP02\og\186.png");
+ruta = strcat("fotogramas\frame_",num2str(I),".jpg");
     
 f0 = imread(ruta);
 
@@ -12,9 +12,9 @@ fR = f0(:,:,1);
 fG = f0(:,:,2);
 fB = f0(:,:,3);
 
-FR = (fR<90);
-FG = (fG<100);
-FB = (fB<50);
+FR = (fR<50);
+FG = (fG<20 & fR>50);
+FB = (fB<100 & fG>70 & fR>100);
 
 [filas, columnas] = size(fR);
 

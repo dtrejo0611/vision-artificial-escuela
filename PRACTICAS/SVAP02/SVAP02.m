@@ -2,23 +2,23 @@ clc
 close all
 clear
 
-XC=zeros(295,1);
-YC=zeros(295,1);
+XV=zeros(438,1);
+YV=zeros(438,1);
 
-XM=zeros(295,1);
-YM=zeros(295,1);
+XR=zeros(438,1);
+YR=zeros(438,1);
 
-XY=zeros(295,1);
-YY=zeros(295,1);
+XY=zeros(438,1);
+YY=zeros(438,1);
 
-TCC = zeros(295,2);
-TCM = zeros(295,2);
-TCY = zeros(295,2);
+TCV = zeros(438,2);
+TCR = zeros(438,2);
+TCY = zeros(438,2);
 
-for I=1:295
+for I=1:438
 
     ruta = strcat("C:\Users\dtrej\Documents\Semestre 25-2\VA\PRACTICAS\" + ...
-        "SVAP02\og\",num2str(I),".png");
+        "SVAP02\fotogramas\frame_",num2str(I-1),".jpg");
 
     ruta2 = strcat("C:\Users\dtrej\Documents\Semestre 25-2\VA" + ...
         "\PRACTICAS\SVAP02\resultado\res",num2str(I-1),".png");
@@ -30,65 +30,61 @@ for I=1:295
     fG = f0(:,:,2);
     fB = f0(:,:,3);
     
-    FR = (fR<90);
-    FG = (fG<100);
-    FB = (fB<50);
+    FR = (fR<50);
+    FG = (fG<20 & fR>50);
+    FB = (fB<100 & fG>20 & fR>50);
     
     [filas, columnas] = size(fR);
     
     x = 1:columnas;
     y = 1:filas;
     
-    fxC = sum(FR,1);
-    fyC = sum(FR,2)';
+    fxV = sum(FR,1);
+    fyV = sum(FR,2)';
 
-    xcC = round(sum(x.*fxC)/sum(fxC));
-    ycC = round(sum(y.*fyC)/sum(fyC));
+    xcV = round(sum(x.*fxV)/sum(fxV));
+    ycV = round(sum(y.*fyV)/sum(fyV));
 
-    XC(I) = xcC;
-    YC(I) = ycC;
+    XV(I) = xcV;
+    YV(I) = ycV;
     
-    if I<177
-        fxM = sum(FG,1);
-        fyM = sum(FG,2)';
-            
-        xcM = round(sum(x.*fxM)/sum(fxM));
-        ycM = round(sum(y.*fyM)/sum(fyM));
-    
-    end
-    XM(I) = xcM;
-    YM(I) = ycM;
+    fxR = sum(FG,1);
+    fyR = sum(FG,2)';
         
-    if I<186
-        fxY = sum(FB,1);
-        fyY = sum(FB,2)';
+    xcR = round(sum(x.*fxR)/sum(fxR));
+    ycR = round(sum(y.*fyR)/sum(fyR));
     
-        xcY = round(sum(x.*fxY)/sum(fxY));
-        ycY = round(sum(y.*fyY)/sum(fyY));
+    XR(I) = xcR;
+    YR(I) = ycR;
         
-    end
+    fxY = sum(FB,1);
+    fyY = sum(FB,2)';
+
+    xcY = round(sum(x.*fxY)/sum(fxY));
+    ycY = round(sum(y.*fyY)/sum(fyY));
+
     XY(I) = xcY;
     YY(I) = ycY;
 
-    TCC(I,:) = [XC(I), YC(I)];
-    TCM(I,:) = [XM(I), YM(I)];
+    TCV(I,:) = [XV(I), YV(I)];
+    TCR(I,:) = [XR(I), YR(I)];
     TCY(I,:) = [XY(I), YY(I)];
 
-    f1(ycC,xcC,:) = [255;0;0]; 
-    f1(ycM,xcM,:) = [255;0;0]; 
+    f1(ycV,xcV,:) = [255;0;0]; 
+    f1(ycR,xcR,:) = [255;0;0]; 
     f1(ycY,xcY,:) = [255;0;0]; 
 
     % if I>2
     %     for k = 2:I
-    %         f1 = insertShape(f1, 'Line', [TCC(k-1,1), TCC(k-1,2), ...
-    %                                TCC(k,1), TCC(k,2)], ...
-    %                     'Color', 'c', 'LineWidth', 2);
+    %         f1 = insertShape(f1, 'Line', [TCV(k-1,1), TCV(k-1,2), ...
+    %                                TCV(k,1), TCV(k,2)], ...
+    %                     'Color', 'g', 'LineWidth', 2);
     %     end
     % 
     %     for k = 2:I
-    %         f1 = insertShape(f1, 'Line', [TCM(k-1,1), TCM(k-1,2), ...
-    %                                TCM(k,1), TCM(k,2)], ...
-    %                     'Color', 'm', 'LineWidth', 2);
+    %         f1 = insertShape(f1, 'Line', [TCR(k-1,1), TCR(k-1,2), ...
+    %                                TCR(k,1), TCR(k,2)], ...
+    %                     'Color', 'r', 'LineWidth', 2);
     %     end
     % 
     %     for k = 2:I
@@ -108,22 +104,22 @@ end
 figure;
 subplot(3,1,1);
 hold on
-plot(XC, 'c')
-plot(XM, 'm')
+plot(XV, 'g')
+plot(XR, 'r')
 plot(XY, 'y')
 hold off
 title("Posicion X de los 3 objetos")
 subplot(3,1,2);
 hold on
-plot(YC, 'c')
-plot(YM, 'm')
+plot(YV, 'g')
+plot(YR, 'r')
 plot(YY, 'y')
 hold off
 title("Posicion Y de los 3 objetos")
 subplot(3,1,3);
 hold on
-plot(XC, YC, 'c')
-plot(XM, YM, 'm')
+plot(XV, YV, 'g')
+plot(XR, YR, 'r')
 plot(XY, YY, 'y')
 hold off
 title("Posicion general de los 3 objetos")
@@ -131,31 +127,31 @@ sgtitle('Posiciones de los 3 objetos')
 
 figure, imshow(f0)
 hold on;
-plot(XC,YC, 'c', 'LineWidth', 3)
-plot(XM,YM, 'm', 'LineWidth', 3)
+plot(XV,YV, 'g', 'LineWidth', 3)
+plot(XR,YR, 'r', 'LineWidth', 3)
 plot(XY,YY, 'y', 'LineWidth', 3)
 hold off;
 
-VXC = zeros(294);
-VYC = zeros(294);
+VXV = zeros(437);
+VYV = zeros(437);
 
-for i=2:294
-    VXC(i-1) = (XC(i)-XC(i-1))/(1/30);
-    VYC(i-1) = (YC(i)-YC(i-1))/(1/30);
+for i=2:437
+    VXV(i-1) = (XV(i)-XV(i-1))/(1/30);
+    VYV(i-1) = (YV(i)-YV(i-1))/(1/30);
 end
 
-VXM = zeros(294);
-VYM = zeros(294);
+VXR = zeros(437);
+VYR = zeros(437);
 
-for i=2:294
-    VXM(i-1) = (XM(i)-XM(i-1))/(1/30);
-    VYM(i-1) = (YM(i)-YM(i-1))/(1/30);
+for i=2:437
+    VXR(i-1) = (XR(i)-XR(i-1))/(1/30);
+    VYR(i-1) = (YR(i)-YR(i-1))/(1/30);
 end
 
-VXY = zeros(294);
-VYY = zeros(294);
+VXY = zeros(437);
+VYY = zeros(437);
 
-for i=2:294
+for i=2:437
     VXY(i-1) = (XY(i)-XY(i-1))/(1/30);
     VYY(i-1) = (YY(i)-YY(i-1))/(1/30);
 end
@@ -163,47 +159,47 @@ end
 figure;
 subplot(3,1,1);
 hold on
-plot(VXC, 'c')
-plot(VXM, 'm')
+plot(VXV, 'g')
+plot(VXR, 'r')
 plot(VXY, 'y')
 hold off
 title("Velocidad X de los 3 objetos")
 subplot(3,1,2);
 hold on
-plot(VYC, 'c')
-plot(VYM, 'm')
+plot(VYV, 'g')
+plot(VYR, 'r')
 plot(VYY, 'y')
 hold off
 title("Velocidad Y de los 3 objetos")
 subplot(3,1,3);
 hold on
-plot(VXC, VYC, 'c')
-plot(VXM, VYM, 'm')
+plot(VXV, VYV, 'g')
+plot(VXR, VYR, 'r')
 plot(VXY, VYY, 'y')
 hold off
 title("Velocidad general de los 3 objetos")
 sgtitle('Velocidades de los 3 objetos')
 
-AXC = zeros(293);
-AYC = zeros(293);
+AXV = zeros(436);
+AYV = zeros(436);
 
-for i=2:293
-    AXC(i-1) = (VXC(i)-VXC(i-1))/(1/30);
-    AYC(i-1) = (VYC(i)-VYC(i-1))/(1/30);
+for i=2:436
+    AXV(i-1) = (VXV(i)-VXV(i-1))/(1/30);
+    AYV(i-1) = (VYV(i)-VYV(i-1))/(1/30);
 end
 
-AXM = zeros(293);
-AYM = zeros(293);
+AXR = zeros(436);
+AYR = zeros(436);
 
-for i=2:293
-    AXM(i-1) = (VXM(i)-VXM(i-1))/(1/30);
-    AYM(i-1) = (VYM(i)-VYM(i-1))/(1/30);
+for i=2:436
+    AXR(i-1) = (VXR(i)-VXR(i-1))/(1/30);
+    AYR(i-1) = (VYR(i)-VYR(i-1))/(1/30);
 end
 
-AXY = zeros(293);
-AYY = zeros(293);
+AXY = zeros(436);
+AYY = zeros(436);
 
-for i=2:293
+for i=2:436
     AXY(i-1) = (VXY(i)-VXY(i-1))/(1/30);
     AYY(i-1) = (VYY(i)-VYY(i-1))/(1/30);
 end
@@ -211,22 +207,22 @@ end
 figure;
 subplot(3,1,1);
 hold on
-plot(AXC, 'c')
-plot(AXM, 'm')
+plot(AXV, 'g')
+plot(AXR, 'r')
 plot(AXY, 'y')
 hold off
 title("Aceleracion X de los 3 objetos")
 subplot(3,1,2);
 hold on
-plot(AYC, 'c')
-plot(AYM, 'm')
+plot(AYV, 'g')
+plot(AYR, 'r')
 plot(AYY, 'y')
 hold off
 title("Aceleracion Y de los 3 objetos")
 subplot(3,1,3);
 hold on
-plot(AXC, AYC, 'c')
-plot(AXM, AYM, 'm')
+plot(AXV, AYV, 'g')
+plot(AXR, AYR, 'r')
 plot(AXY, AYY, 'y')
 hold off
 title("Aceleracion general de los 3 objetos")
