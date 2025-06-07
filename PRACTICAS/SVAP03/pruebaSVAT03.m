@@ -7,8 +7,50 @@ i = 4;
 % rutai = strcat("SVA12 VISION ESTEREO\Left Image ",num2str(i),".png");
 % rutad = strcat("SVA12 VISION ESTEREO\Right Image ",num2str(i),".png");
 
-f0i = imread("I2.jpg");
-f0d = imread("D2.jpg");
+% f0i = imread("I2.jpg");
+% f0d = imread("D2.jpg");
+
+imaqreset
+% Inicializar la cámara
+cam = videoinput('winvideo', 1); % Ajusta si usas otro formato
+set(cam, 'ReturnedColorSpace', 'rgb');
+
+% Mostrar vista previa
+preview(cam);
+disp('Vista previa iniciada...');
+
+% Esperar a que presiones Enter
+input('Presiona Enter para capturar la imagen...');
+
+% Capturar la imagen
+f0i = getsnapshot(cam);
+
+% Detener vista previa
+closepreview(cam);
+
+% Liberar la cámara
+delete(cam);
+
+imaqreset
+% Inicializar la cámara
+cam = videoinput('winvideo', 1); % Ajusta si usas otro formato
+set(cam, 'ReturnedColorSpace', 'rgb');
+
+% Mostrar vista previa
+preview(cam);
+disp('Vista previa iniciada...');
+
+% Esperar a que presiones Enter
+input('Presiona Enter para capturar la imagen...');
+
+% Capturar la imagen
+f0d = getsnapshot(cam);
+
+% Detener vista previa
+closepreview(cam);
+
+% Liberar la cámara
+delete(cam);
 
 % [filas, columnas] = size(f0i);
 % 
@@ -153,7 +195,7 @@ d = 10;
 % f = z*(xi-xd)/d
 
 %Promediar con varios experimentos con la ecuacion
-f = 1.5778e+03;
+f = 954.8;
 % 
 zBR = (d*f)/(xcBRi-xcBRd)
 zBC = (d*f)/(xcBCi-xcBCd)
