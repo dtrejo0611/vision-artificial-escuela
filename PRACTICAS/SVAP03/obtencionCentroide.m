@@ -2,8 +2,8 @@ clc
 clear
 close all
 
-f0 = imread("I2.jpg");
-% f0 = imread("D2.jpg");
+% f0 = imread("I3.jpg");
+f0 = imread("D3.jpg");
 
 fR = f0(:,:,1);
 fG = f0(:,:,2);
@@ -11,9 +11,9 @@ fB = f0(:,:,3);
 
 % FBR = (fG<28 & fR>20);%Para izquierda
 FBR = (fG<60 & fR>70);
-FBC = (fR<50 & fG>30 & fB>70);
-FPV = (fG<50 & fB<25 & fR<20);
-FCA = (fG<40 & fB>35 & fR<40);
+FBC = (fR<80 & fB>90 & fG>90);
+FPV = (fR<50 & fB<50);
+FCA = (fR<40 & fB>70);
 
 [filas, columnas] = size(fR);
 
@@ -87,7 +87,7 @@ for i=xcCA-5:xcCA+5
 end
 
 figure,imshow(f0)
-figure,imshow(FBR)
+% figure,imshow(FBR)
 % figure,imshow(FBC)
 % figure,imshow(FPV)
-% figure,imshow(FCA)
+figure,imshow(FCA)

@@ -65,7 +65,7 @@ xd = xd-columnas/2;
 yd = filas/2-yd;
 
 d = 10;
-z = 42;
+z = 50.2;
 
 
 f = z*(xi-xd)/d

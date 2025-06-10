@@ -12,7 +12,7 @@ i = 4;
 
 imaqreset
 % Inicializar la cámara
-cam = videoinput('winvideo', 1); % Ajusta si usas otro formato
+cam = videoinput('winvideo', 3); % Ajusta si usas otro formato
 set(cam, 'ReturnedColorSpace', 'rgb');
 
 % Mostrar vista previa
@@ -33,7 +33,7 @@ delete(cam);
 
 imaqreset
 % Inicializar la cámara
-cam = videoinput('winvideo', 1); % Ajusta si usas otro formato
+cam = videoinput('winvideo', 3); % Ajusta si usas otro formato
 set(cam, 'ReturnedColorSpace', 'rgb');
 
 % Mostrar vista previa
@@ -70,14 +70,14 @@ fBi = f0i(:,:,3);
 
 % FBR = (fG<28 & fR>20);%Para izquierda
 FBRd = (fGd<60 & fRd>70);
-FBCd = (fRd<50 & fGd>30 & fBd>70);
-FPVd = (fGd<50 & fBd<25 & fRd<20);
-FCAd = (fGd<40 & fBd>35 & fRd<40);
+FBCd = (fRd<80 & fBd>90 & fGd>90);
+FPVd = (fRd<50 & fBd<50);
+FCAd = (fRd<40 & fBd>70);
 
 FBRi = (fGi<60 & fRi>70);
-FBCi = (fRi<50 & fGi>30 & fBi>70);
-FPVi = (fGi<50 & fBi<25 & fRi<20);
-FCAi = (fGi<40 & fBi>35 & fRi<40);
+FBCi = (fRi<80 & fBi>90 & fGi>90);
+FPVi = (fRi<50 & fBi<50);
+FCAi = (fRi<40 & fBi>70);
 
 [filas, columnas] = size(fRi);
 
@@ -188,14 +188,14 @@ ycPVd = filas/2-ycPVd;
 xcCAd = xcCAd-columnas/2;
 ycCAd = filas/2-ycCAd;
 
-d = 10;
+d = 8.2;
 % z = 49;%Backugan rojo
 
 
 % f = z*(xi-xd)/d
 
 %Promediar con varios experimentos con la ecuacion
-f = 954.8;
+f = 1.4299e+03;
 % 
 zBR = (d*f)/(xcBRi-xcBRd)
 zBC = (d*f)/(xcBCi-xcBCd)
