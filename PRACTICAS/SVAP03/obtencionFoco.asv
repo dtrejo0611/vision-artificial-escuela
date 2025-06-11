@@ -34,4 +34,4 @@ d = 8.2;
 %Promediar con varios experimentos con la ecuacion
 f = 1175;
 
-z = (d*f)/(xi-xd)
+z = (d*f)/(xi-xd)+1

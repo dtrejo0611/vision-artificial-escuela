@@ -115,7 +115,7 @@ fyCAi = sum(FCAi,2)';
 % figure, plot(fx)
 % figure, plot(fy)
 
-xcBRd = round(sum(x.*fxBRd)/sum(fxBRd));
+xcBRd = round(sum(x.*fxBRd)/sum(fxBRd)-50);
 ycBRd = round(sum(y.*fyBRd)/sum(fyBRd)-20);
 
 xcBVd = round(sum(x.*fxBVd)/sum(fxBVd)-30);
@@ -127,8 +127,8 @@ ycBAd = round(sum(y.*fyBAd)/sum(fyBAd)+20);
 xcCAd = round(sum(x.*fxCAd)/sum(fxCAd));
 ycCAd = round(sum(y.*fyCAd)/sum(fyCAd));
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-xcBRi = round(sum(x.*fxBRi)/sum(fxBRi)-20);
-ycBRi = round(sum(y.*fyBRi)/sum(fyBRi)-20);
+xcBRi = round(sum(x.*fxBRi)/sum(fxBRi));
+ycBRi = round(sum(y.*fyBRi)/sum(fyBRi));
 
 xcBVi = round(sum(x.*fxBVi)/sum(fxBVi));
 ycBVi = round(sum(y.*fyBVi)/sum(fyBVi));
