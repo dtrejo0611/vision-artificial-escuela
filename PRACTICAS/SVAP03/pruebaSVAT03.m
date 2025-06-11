@@ -2,7 +2,7 @@ clc
 clear
 close all
 
-i = 4;
+% i = 4;
 
 % rutai = strcat("SVA12 VISION ESTEREO\Left Image ",num2str(i),".png");
 % rutad = strcat("SVA12 VISION ESTEREO\Right Image ",num2str(i),".png");
