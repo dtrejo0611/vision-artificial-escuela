@@ -1,0 +1,30 @@
+clc
+clear
+close all
+
+n=3;
+
+ruta = strcat("ELEMENTOS\", num2str(n), ".jpg");
+
+f0 = imread(ruta);
+f1 = imresize(f0,0.1,"nearest");
+f2 = rgb2gray(f1);
+f3 = Correccion('p',f2,.5);
+f4 = edge(f3,"canny",[0.1 0.9]);
+[filas, columnas] = size(f2);
+
+for i=1:filas
+    for j=1:columnas
+        if f4(i,j) == 1
+            f1(i,j,1) = 0;
+            f1(i,j,2) = 255;
+            f1(i,j,3) = 0;
+        end
+    end
+end
+
+
+figure, imshow(f2)
+% figure, imshow(f3)
+% figure, imshow(f4)
+% figure, imshow(f1)
