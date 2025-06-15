@@ -4,7 +4,7 @@ close all
 
 imaqreset
 % Inicializar la cámara
-cam = videoinput('winvideo', 1); % Ajusta si usas otro formato
+cam = videoinput('winvideo', 2); % Ajusta si usas otro formato
 set(cam, 'ReturnedColorSpace', 'rgb');
 
 % Mostrar vista previa
