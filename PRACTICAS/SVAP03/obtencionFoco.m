@@ -25,13 +25,13 @@ yi = filas/2-yi;
 xd = xd-columnas/2;
 yd = filas/2-yd;
 
-d = 8.2;
-% z = 26;
+d = 23.5;
+z = 31;
 
 
-% f = z*(xi-xd)/d
+f = z*(xi-xd)/d
 
 %Promediar con varios experimentos con la ecuacion
-f = 1175;
+% f = 1175;
 
-z = (d*f)/(xi-xd)
+% z = (d*f)/(xi-xd)

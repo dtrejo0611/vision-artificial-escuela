@@ -64,6 +64,7 @@ delete(cam);
 % f0d(round(filas/2),:)=zeros(1,columnas);
 % f0d(:,round(columnas/2))=zeros(filas,1);
 
+
 fRd = f0d(:,:,1);
 fGd = f0d(:,:,2);
 fBd = f0d(:,:,3);
@@ -73,14 +74,14 @@ fGi = f0i(:,:,2);
 fBi = f0i(:,:,3);
 
 FBRd = (fGd<60 & fRd>70);
-FBVd = (fRd<90 & fBd<80 & fGd>100);
-FBAd = (fRd>160 & fGd>130 & fBd<60);
-FCAd = (fRd<60 & fGd<60 & fBd>80);
+FBVd = (fRd<100 & fBd<100 & fGd>80);
+FBAd = (fBd<100 & fGd>100 & fRd>150);
+FCAd = (fRd<50);
 
 FBRi = (fGi<60 & fRi>70);
-FBVi = (fRi<90 & fBi<80 & fGi>100);
-FBAi = (fRi>160 & fGi>130 & fBi<60);
-FCAi = (fRi<60 & fGi<60 & fBi>80);
+FBVi = (fRi<100 & fBi<100 & fGi>80);
+FBAi = (fBi<100 & fGi>100 & fRi>150);
+FCAi = (fRi<50);
 
 [filas, columnas] = size(fRi);
 
@@ -116,24 +117,24 @@ fyCAi = sum(FCAi,2)';
 % figure, plot(fy)
 
 xcBRd = round(sum(x.*fxBRd)/sum(fxBRd));
-ycBRd = round(sum(y.*fyBRd)/sum(fyBRd)-20);
+ycBRd = round(sum(y.*fyBRd)/sum(fyBRd));
 
-xcBVd = round(sum(x.*fxBVd)/sum(fxBVd)-30);
+xcBVd = round(sum(x.*fxBVd)/sum(fxBVd));
 ycBVd = round(sum(y.*fyBVd)/sum(fyBVd));
 
-xcBAd = round(sum(x.*fxBAd)/sum(fxBAd)-50);
-ycBAd = round(sum(y.*fyBAd)/sum(fyBAd)+20);
+xcBAd = round(sum(x.*fxBAd)/sum(fxBAd));
+ycBAd = round(sum(y.*fyBAd)/sum(fyBAd));
 
 xcCAd = round(sum(x.*fxCAd)/sum(fxCAd));
 ycCAd = round(sum(y.*fyCAd)/sum(fyCAd));
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-xcBRi = round(sum(x.*fxBRi)/sum(fxBRi)-20);
-ycBRi = round(sum(y.*fyBRi)/sum(fyBRi)-20);
+xcBRi = round(sum(x.*fxBRi)/sum(fxBRi));
+ycBRi = round(sum(y.*fyBRi)/sum(fyBRi));
 
 xcBVi = round(sum(x.*fxBVi)/sum(fxBVi));
 ycBVi = round(sum(y.*fyBVi)/sum(fyBVi));
 
-xcBAi = round(sum(x.*fxBAi)/sum(fxBAi)-20);
+xcBAi = round(sum(x.*fxBAi)/sum(fxBAi));
 ycBAi = round(sum(y.*fyBAi)/sum(fyBAi));
 
 xcCAi = round(sum(x.*fxCAi)/sum(fxCAi));
@@ -198,12 +199,12 @@ d = 8.2;
 % f = z*(xi-xd)/d
 
 %Promediar con varios experimentos con la ecuacion
-f = 1175;
+f = 1130.57;
 % 
-zBR = (d*f)/(xcBRi-xcBRd)
-zBV = (d*f)/(xcBVi-xcBVd)
-zBA = (d*f)/(xcBAi-xcBAd)
-zCA = (d*f)/(xcCAi-xcCAd)
+zBR = (d*f)/(xcBRi-xcBRd)-2
+zBV = (d*f)/(xcBVi-xcBVd)-2
+zBA = (d*f)/(xcBAi-xcBAd)-2
+zCA = (d*f)/(xcCAi-xcCAd)-2
 
 for i=XBRi-5:XBRi+5
     for j=YBRi-5:YBRi+5
@@ -315,4 +316,4 @@ end
 
 
 
-ylim([0, 100])
+ylim([0, 50])

@@ -11,9 +11,9 @@ fB = f0(:,:,3);
 
 % FBR = (fG<28 & fR>20);%Para izquierda
 FBR = (fG<60 & fR>70);
-FBV = (fR<90 & fB<80 & fG>100);
-FBA = (fR>160 & fG>130 & fB<60);
-FCA = (fR<60 & fG<60 & fB>80);
+FBV = (fR<100 & fB<100 & fG>80);
+FBA = (fB<100 & fG>100 & fR>150);
+FCA = (fR<50);
 
 [filas, columnas] = size(fR);
 
@@ -88,6 +88,6 @@ end
 
 figure,imshow(f0)
 % figure,imshow(FBR)
-% figure,imshow(FBV)
+figure,imshow(FBV)
 % figure,imshow(FBA)
-figure,imshow(FCA)
+% figure,imshow(FCA)
