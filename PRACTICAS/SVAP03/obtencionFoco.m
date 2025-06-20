@@ -25,8 +25,8 @@ yi = filas/2-yi;
 xd = xd-columnas/2;
 yd = filas/2-yd;
 
-d = 23.5;
-z = 31;
+d = 7.8;
+z = 26;
 
 
 f = z*(xi-xd)/d
